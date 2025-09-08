@@ -1,0 +1,23 @@
+{
+  "name": "travlr-mean",
+  "version": "1.0.0",
+  "description": "CS-465 Module 1 Travlr shell",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brandon-Mullins/CS-465.git"
+  },
+  "keywords": [],
+  "author": "Brandon Mullins",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Brandon-Mullins/CS-465/issues"
+  },
+  "homepage": "https://github.com/Brandon-Mullins/CS-465#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
