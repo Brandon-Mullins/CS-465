@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Brandon-Mullins/CS-465#readme",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "hbs": "^4.2.0"
   }
 }

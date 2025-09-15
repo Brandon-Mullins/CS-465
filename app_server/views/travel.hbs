@@ -1,0 +1,22 @@
+{{!< layouts/main}}
+<section>
+  <h1>Travel Packages</h1>
+
+  {{#if trips}}
+    <ul class="trip-list">
+      {{#each trips}}
+        <li class="trip" style="display:flex; gap:1rem; margin-bottom:1rem;">
+          <div class="trip-media">
+            <img src="{{image}}" alt="{{title}}" style="max-width:240px;">
+          </div>
+          <div class="trip-body">
+            <h3>{{title}}</h3>
+            <p>From ${{price}} • Starts {{start}} • {{nights}} nights</p>
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p>No trips available.</p>
+  {{/if}}
+</section>

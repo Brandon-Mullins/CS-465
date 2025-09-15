@@ -1,22 +1,29 @@
 const path = require('path');
 const express = require('express');
+const hbs = require('hbs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Serve static files from /public
+// ----- VIEW ENGINE (HBS) -----
+app.set('views', path.join(__dirname, 'app_server', 'views'));
+app.set('view engine', 'hbs');
+
+// register partials (header, footer, etc.)
+hbs.registerPartials(path.join(__dirname, 'app_server', 'views', 'partials'));
+
+// ----- STATIC ASSETS -----
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Homepage route (optional)
-app.get('/', (_req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+// ----- ROUTES -----
+const routes = require('./app_server/routes/index');
+app.use('/', routes);
 
-// Simple test endpoint
+// ----- HEALTH CHECK (still works) -----
 app.get('/api/ping', (_req, res) => {
   res.json({ ok: true, ts: Date.now() });
 });
 
 app.listen(PORT, () => {
-  console.log(`Travlr server running at http://localhost:${PORT}`);
+  console.log(`Travlr server with HBS running at http://localhost:${PORT}`);
 });
