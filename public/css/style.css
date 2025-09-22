@@ -543,3 +543,71 @@ hr {
 #connect a.googleplus:hover {
 	background-position: 0 -197px;
 }
+/* Travel page styles */
+.travel-page {
+  padding: 20px;
+}
+
+.trip-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.trip-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 300px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.trip-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.trip-info {
+  padding: 10px;
+}
+
+.trip-title {
+  margin: 0;
+  font-size: 1.25em;
+}
+
+.trip-meta {
+  color: #555;
+  font-size: 0.9em;
+}
+/* ===== Module 3: Travel dynamic list ===== */
+.travel-page { max-width: 1100px; margin: 0 auto; padding: 20px 10px; }
+
+.trip-list { 
+  list-style: none;
+  margin: 0; 
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.trip-card {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 12px;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  box-shadow: 0 2px 4px rgba(0,0,0,.06);
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.trip-img { width: 120px; height: 85px; object-fit: cover; border-radius: 4px; }
+.trip-title { margin: 0 0 4px 0; font-size: 1.1rem; }
+.trip-meta  { margin: 0; color: #555; font-size: .95rem; }

@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Hawaii – Honolulu",
+    "price": 1299,
+    "start": "2025-12-10",
+    "nights": 6,
+    "image": "/images/reef1.jpg"
+  },
+  {
+    "title": "Cancún – All Inclusive",
+    "price": 999,
+    "start": "2025-11-03",
+    "nights": 5,
+    "image": "/images/reef2.jpg"
+  },
+  {
+    "title": "Alaska Cruise",
+    "price": 1899,
+    "start": "2026-05-21",
+    "nights": 7,
+    "image": "/images/reef3.jpg"
+  }
+]
