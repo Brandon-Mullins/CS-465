@@ -4,7 +4,8 @@
   "description": "CS-465 Module 1 Travlr shell",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "seed:trips": "node seed/tripsSeed.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,9 @@
   },
   "homepage": "https://github.com/Brandon-Mullins/CS-465#readme",
   "dependencies": {
+    "dotenv": "^17.2.2",
     "express": "^4.19.2",
-    "hbs": "^4.2.0"
+    "hbs": "^4.2.0",
+    "mongoose": "^8.18.2"
   }
 }

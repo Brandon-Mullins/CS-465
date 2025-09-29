@@ -1,9 +1,16 @@
+// ----- ENV & DB -----
+require('dotenv').config();
+require('./app_server/models/db'); // initialize mongoose connection
+
 const path = require('path');
 const express = require('express');
 const hbs = require('hbs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Parse JSON bodies for API routes
+app.use(express.json());
 
 // ----- VIEW ENGINE (HBS) -----
 app.set('views', path.join(__dirname, 'app_server', 'views'));
@@ -15,11 +22,14 @@ hbs.registerPartials(path.join(__dirname, 'app_server', 'views', 'partials'));
 // ----- STATIC ASSETS -----
 app.use(express.static(path.join(__dirname, 'public')));
 
-// ----- ROUTES -----
+// ----- API ROUTES -----
+app.use('/api/trips', require('./app_server/routes/api/trips'));
+
+// ----- SITE ROUTES -----
 const routes = require('./app_server/routes/index');
 app.use('/', routes);
 
-// ----- HEALTH CHECK (still works) -----
+// ----- HEALTH CHECK -----
 app.get('/api/ping', (_req, res) => {
   res.json({ ok: true, ts: Date.now() });
 });
