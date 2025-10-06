@@ -2,8 +2,8 @@
 require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
-const mongoose = require('../app_server/models/db');
-const Trip = require('../app_server/models/trip');
+const mongoose = require('../app_api/models/db');   // <-- was app_server
+const Trip = require('../app_api/models/trip');      // <-- was app_server
 
 (async () => {
   try {

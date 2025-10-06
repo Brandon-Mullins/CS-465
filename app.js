@@ -1,6 +1,6 @@
 // ----- ENV & DB -----
 require('dotenv').config();
-require('./app_server/models/db'); // initialize mongoose connection
+require('./app_api/models/db'); // <-- moved to app_api
 
 const path = require('path');
 const express = require('express');
@@ -15,17 +15,15 @@ app.use(express.json());
 // ----- VIEW ENGINE (HBS) -----
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'hbs');
-
-// register partials (header, footer, etc.)
 hbs.registerPartials(path.join(__dirname, 'app_server', 'views', 'partials'));
 
 // ----- STATIC ASSETS -----
 app.use(express.static(path.join(__dirname, 'public')));
 
-// ----- API ROUTES -----
-app.use('/api/trips', require('./app_server/routes/api/trips'));
+// ----- API ROUTES (now under /api) -----
+app.use('/api', require('./app_api/routes'));
 
-// ----- SITE ROUTES -----
+// ----- SITE ROUTES (HBS) -----
 const routes = require('./app_server/routes/index');
 app.use('/', routes);
 
