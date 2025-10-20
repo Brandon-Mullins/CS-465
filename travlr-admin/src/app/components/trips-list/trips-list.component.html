@@ -1,0 +1,16 @@
+<h2 class="mb-3">Available Trips</h2>
+
+<a class="btn btn-success mb-3" [routerLink]="['/trip','new']">Add Trip</a>
+
+<div class="row g-3">
+  <div class="col-md-4" *ngFor="let t of trips">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">{{ t.title }}</h5>
+        <p class="card-text">Price: ${{ t.price }}</p>
+        <p class="card-text">Nights: {{ t.nights }}</p>
+        <a class="btn btn-primary btn-sm" [routerLink]="['/trip', t._id]">Edit</a>
+      </div>
+    </div>
+  </div>
+</div>
