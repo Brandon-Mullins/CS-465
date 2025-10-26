@@ -7,7 +7,7 @@ if (!uri) {
   process.exit(1);
 }
 
-mongoose.connect(uri /*, { } */);
+mongoose.connect(uri);
 
 mongoose.connection.on('connected', () => {
   console.log(`Mongoose connected to ${uri}`);
@@ -21,7 +21,6 @@ mongoose.connection.on('disconnected', () => {
   console.log('Mongoose disconnected');
 });
 
-// Graceful shutdown (Ctrl+C)
 process.on('SIGINT', async () => {
   await mongoose.connection.close();
   console.log('Mongoose disconnected through app termination');

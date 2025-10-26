@@ -1,37 +1,38 @@
-// ----- ENV & DB -----
 require('dotenv').config();
-require('./app_api/models/db'); // <-- moved to app_api
+require('./app_api/models/db');
 
 const path = require('path');
 const express = require('express');
 const hbs = require('hbs');
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Parse JSON bodies for API routes
+app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-// ----- VIEW ENGINE (HBS) -----
+// HBS - public site
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'hbs');
 hbs.registerPartials(path.join(__dirname, 'app_server', 'views', 'partials'));
 
-// ----- STATIC ASSETS -----
+// static
 app.use(express.static(path.join(__dirname, 'public')));
 
-// ----- API ROUTES (now under /api) -----
+// API
+app.use('/api/auth', require('./app_api/routes/auth'));
 app.use('/api', require('./app_api/routes'));
 
-// ----- SITE ROUTES (HBS) -----
-const routes = require('./app_server/routes/index');
-app.use('/', routes);
+// public site (HBS)
+app.use('/', require('./app_server/routes/index'));
 
-// ----- HEALTH CHECK -----
-app.get('/api/ping', (_req, res) => {
-  res.json({ ok: true, ts: Date.now() });
-});
+// health
+app.get('/api/ping', (_req, res) => res.json({ ok: true }));
 
 app.listen(PORT, () => {
-  console.log(`Travlr server with HBS running at http://localhost:${PORT}`);
+  console.log(`Travlr server at http://localhost:${PORT}`);
 });
+
+
